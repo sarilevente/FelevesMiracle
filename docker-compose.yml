@@ -13,10 +13,8 @@ services:
       #- /:/config
       - /etc/localtime:/etc/localtime:ro
   influxdb:
-    image: influxdb:1.8.1-alpine
+    image: quay.io/influxdb/influxdb:v2.0.1
     network_mode: "host"
-    ports:
-      - "8086:8086"
     volumes:
       - influxData:/var/lib/influxdb
 
