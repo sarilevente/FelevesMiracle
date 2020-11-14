@@ -1,0 +1,24 @@
+###########################
+# Copyright               #
+# © 2020 Kártyás Bálint.  #
+# All rights reserved.    #
+###########################
+
+version: '3.7'
+services:
+  home-assistant:
+    image: homeassistant/home-assistant:stable
+    network_mode: "host"
+    volumes:
+      #- /:/config
+      - /etc/localtime:/etc/localtime:ro
+  influxdb:
+    image: influxdb:1.8.1-alpine
+    network_mode: "host"
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxData:/var/lib/influxdb
+
+volumes:
+  influxData:
